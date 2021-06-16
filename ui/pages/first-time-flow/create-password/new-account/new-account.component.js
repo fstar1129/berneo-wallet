@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '../../../../components/ui/button';
 import {
   INITIALIZE_SEED_PHRASE_INTRO_ROUTE,
+  INITIALIZE_SEED_PHRASE_ROUTE,
   INITIALIZE_SELECT_ACTION_ROUTE,
 } from '../../../../helpers/constants/routes';
 import TextField from '../../../../components/ui/text-field';
@@ -23,7 +24,7 @@ export default class NewAccount extends PureComponent {
     confirmPassword: '',
     passwordError: '',
     confirmPasswordError: '',
-    termsChecked: false,
+    termsChecked: true,
   };
 
   isValid() {
@@ -108,7 +109,7 @@ export default class NewAccount extends PureComponent {
         },
       });
 
-      history.push(INITIALIZE_SEED_PHRASE_INTRO_ROUTE);
+      history.push(INITIALIZE_SEED_PHRASE_ROUTE);
     } catch (error) {
       this.setState({ passwordError: error.message });
     }
@@ -195,7 +196,7 @@ export default class NewAccount extends PureComponent {
             fullWidth
             largeLabel
           />
-          <div
+          {/* <div
             className="first-time-flow__checkbox-container"
             onClick={this.toggleTermsCheck}
           >
@@ -227,10 +228,10 @@ export default class NewAccount extends PureComponent {
                 </a>,
               ])}
             </span>
-          </div>
+          </div> */}
           <Button
-            type="primary"
-            className="first-time-flow__button"
+            type="secondary"
+            className="first-time-flow__button button--rounded"
             disabled={!this.isValid() || !termsChecked}
             onClick={this.handleCreate}
           >

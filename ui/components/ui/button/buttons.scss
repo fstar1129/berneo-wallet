@@ -38,23 +38,24 @@ $warning-light-orange: #f8b588;
 }
 
 .btn-secondary {
-  color: $Blue-500;
-  border: 1px solid $hover-secondary;
+  color: $Green-600;
+  border: 1px solid $Green-600;
   background-color: $white;
 
   &:hover {
-    border-color: $Blue-500;
+    border-color: $Green-500;
   }
 
   &:active {
-    background: $Blue-000;
-    border-color: $Blue-500;
+    background: $Green-000;
+    border-color: $Green-500;
   }
 
   &--disabled,
   &[disabled] {
     opacity: 1;
-    color: $hover-secondary;
+    color: $Green-200 !important;
+    border: 1px solid $Green-200;
   }
 }
 
@@ -145,23 +146,23 @@ $warning-light-orange: #f8b588;
 
 .btn-primary {
   color: $white;
-  border: 1px solid $Blue-500;
-  background-color: $Blue-500;
+  border: 1px solid $Green-500;
+  background-color: $Green-500;
 
   &:hover {
-    border-color: $hover-confirm;
-    background-color: $hover-confirm;
+    border-color: $Green-600;
+    background-color: $Green-600;
   }
 
   &:active {
-    background: $Blue-600;
-    border-color: $Blue-600;
+    background: $Green-600;
+    border-color: $Green-600;
   }
 
   &--disabled,
   &[disabled] {
-    border-color: $hover-secondary;
-    background-color: $hover-secondary;
+    border-color: $Green-200;
+    background-color: $Green-200;
   }
 }
 
@@ -237,16 +238,16 @@ input[type="submit"][disabled] {
   }
 
   &.btn-secondary {
-    border: 1px solid $Blue-500;
+    border: 1px solid $Green-500;
 
     &--disabled,
     &[disabled] {
-      border-color: $hover-secondary;
-      color: $hover-secondary;
+      border-color: $Green-200 !important;
+      color: $Green-200;
     }
 
     &:active {
-      border-color: $Blue-600;
+      border-color: $Green-600;
     }
   }
 

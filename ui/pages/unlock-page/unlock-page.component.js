@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import getCaretCoordinates from 'textarea-caret';
 import TextField from '../../components/ui/text-field';
+import classnames from 'classnames';
 import Mascot from '../../components/ui/mascot';
 import { DEFAULT_ROUTE } from '../../helpers/constants/routes';
 
@@ -19,7 +20,7 @@ export default class UnlockPage extends Component {
     onRestore: PropTypes.func,
     onSubmit: PropTypes.func,
     forceUpdateMetamaskState: PropTypes.func,
-    showOptInModal: PropTypes.func,
+    // showOptInModal: PropTypes.func,
   };
 
   state = {
@@ -44,7 +45,7 @@ export default class UnlockPage extends Component {
     event.stopPropagation();
 
     const { password } = this.state;
-    const { onSubmit, forceUpdateMetamaskState, showOptInModal } = this.props;
+    const { onSubmit, forceUpdateMetamaskState } = this.props;
 
     if (password === '' || this.submitting) {
       return;
@@ -65,12 +66,12 @@ export default class UnlockPage extends Component {
         isNewVisit: true,
       });
 
-      if (
-        newState.participateInMetaMetrics === null ||
-        newState.participateInMetaMetrics === undefined
-      ) {
-        showOptInModal();
-      }
+      // if (
+      //   newState.participateInMetaMetrics === null ||
+      //   newState.participateInMetaMetrics === undefined
+      // ) {
+      //   showOptInModal();
+      // }
     } catch ({ message }) {
       if (message === 'Incorrect password') {
         const newState = await forceUpdateMetamaskState();
@@ -143,10 +144,14 @@ export default class UnlockPage extends Component {
       <div className="unlock-page__container">
         <div className="unlock-page">
           <div className="unlock-page__mascot-container">
-            <Mascot
-              animationEventEmitter={this.animationEventEmitter}
-              width="120"
-              height="120"
+            <img
+              height="100"
+              src="./images/logo/berneo-logo-horizontal-100.png"
+              className={classnames(
+                'app-header__metafox-logo',
+                'app-header__metafox-logo--horizontal',
+              )}
+              alt=""
             />
           </div>
           <h1 className="unlock-page__title">{t('welcomeBack')}</h1>

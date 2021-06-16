@@ -5,9 +5,11 @@ import Button from '../../../../components/ui/button';
 import {
   INITIALIZE_END_OF_FLOW_ROUTE,
   INITIALIZE_SEED_PHRASE_ROUTE,
+  DEFAULT_ROUTE
 } from '../../../../helpers/constants/routes';
 import { exportAsFile } from '../../../../helpers/utils/util';
 import DraggableSeed from './draggable-seed.component';
+import { returnToOnboardingInitiator } from '../../onboarding-initiator-util';
 
 const EMPTY_SEEDS = Array(12).fill(null);
 
@@ -26,6 +28,12 @@ export default class ConfirmSeedPhrase extends PureComponent {
     seedPhrase: PropTypes.string,
     initializeThreeBox: PropTypes.func,
     setSeedPhraseBackedUp: PropTypes.func,
+    completionMetaMetricsName: PropTypes.string,
+    setCompletedOnboarding: PropTypes.func,
+    onboardingInitiator: PropTypes.exact({
+      location: PropTypes.string,
+      tabId: PropTypes.number,
+    }),
   };
 
   state = {
@@ -69,8 +77,20 @@ export default class ConfirmSeedPhrase extends PureComponent {
     exportAsFile('', this.props.seedPhrase, 'text/plain');
   };
 
+  async _onOnboardingComplete() {
+    const { setCompletedOnboarding, completionMetaMetricsName } = this.props;
+    await setCompletedOnboarding();
+    this.context.metricsEvent({
+      eventOpts: {
+        category: 'Onboarding',
+        action: 'Onboarding Complete',
+        name: completionMetaMetricsName,
+      },
+    });
+  }
+
   handleSubmit = async () => {
-    const { history, setSeedPhraseBackedUp, initializeThreeBox } = this.props;
+    const { history, setSeedPhraseBackedUp, initializeThreeBox, onboardingInitiator } = this.props;
 
     if (!this.isValid()) {
       return;
@@ -87,7 +107,12 @@ export default class ConfirmSeedPhrase extends PureComponent {
 
       setSeedPhraseBackedUp(true).then(async () => {
         initializeThreeBox();
-        history.push(INITIALIZE_END_OF_FLOW_ROUTE);
+        // history.push(INITIALIZE_END_OF_FLOW_ROUTE);
+        await this._onOnboardingComplete();
+        if (onboardingInitiator) {
+          await returnToOnboardingInitiator(onboardingInitiator);
+        }
+        history.push(DEFAULT_ROUTE);
       });
     } catch (error) {
       console.error(error.message);
@@ -187,8 +212,8 @@ export default class ConfirmSeedPhrase extends PureComponent {
           })}
         </div>
         <Button
-          type="primary"
-          className="first-time-flow__button"
+          type="secondary"
+          className="first-time-flow__button btn--rounded"
           onClick={this.handleSubmit}
           disabled={!this.isValid()}
         >

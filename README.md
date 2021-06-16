@@ -1,4 +1,4 @@
-# Berneo Wallet Browser Extension
+# BORNEO Wallet Browser Extension
 
 ## Building locally
 

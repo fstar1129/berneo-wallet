@@ -94,6 +94,10 @@
     margin-bottom: 24px;
     color: black;
 
+    background: #fbc12c;
+    border-radius: 13px;
+    text-align: center;
+
     @media screen and (max-width: $break-small) {
       @include H6;
 

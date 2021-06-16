@@ -24,6 +24,10 @@
     margin-top: 40px;
   }
 
+  &__select-button:first-child {
+    border-right: 1px solid #28a745;
+  }
+
   &__select-button {
     display: flex;
     flex-direction: column;
@@ -31,10 +35,7 @@
     justify-content: space-evenly;
     width: 388px;
     height: 278px;
-    border: 1px solid #d8d8d8;
     box-sizing: border-box;
-    border-radius: 10px;
-    margin-left: 22px;
 
     .first-time-flow__button {
       max-width: 221px;

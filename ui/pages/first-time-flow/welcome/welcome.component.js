@@ -1,6 +1,7 @@
 import EventEmitter from 'events';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import Mascot from '../../../components/ui/mascot';
 import Button from '../../../components/ui/button';
 import {
@@ -45,10 +46,19 @@ export default class Welcome extends PureComponent {
     return (
       <div className="welcome-page__wrapper">
         <div className="welcome-page">
-          <Mascot
+          {/* <Mascot
             animationEventEmitter={this.animationEventEmitter}
             width="125"
             height="125"
+          /> */}
+          <img
+            height="100"
+            src="./images/logo/berneo-logo-horizontal-100.png"
+            className={classnames(
+              'app-header__metafox-logo',
+              'app-header__metafox-logo--horizontal',
+            )}
+            alt=""
           />
           <div className="welcome-page__header">{t('welcome')}</div>
           <div className="welcome-page__description">
@@ -56,8 +66,8 @@ export default class Welcome extends PureComponent {
             <div>{t('happyToSeeYou')}</div>
           </div>
           <Button
-            type="primary"
-            className="first-time-flow__button"
+            type="secondary"
+            className="first-time-flow__button btn--rounded"
             onClick={this.handleContinue}
           >
             {t('getStarted')}

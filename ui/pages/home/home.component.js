@@ -360,7 +360,7 @@ export default class Home extends PureComponent {
           exact
         />
         <div className="home__container">
-          {showWhatsNew ? <WhatsNewPopup onClose={hideWhatsNewPopup} /> : null}
+          {/* {showWhatsNew ? <WhatsNewPopup onClose={hideWhatsNewPopup} /> : null} */}
           {!showWhatsNew && showRecoveryPhraseReminder ? (
             <RecoveryPhraseReminder
               hasBackedUp={seedPhraseBackedUp}

@@ -140,7 +140,7 @@ export default class RevealSeedPhrase extends PureComponent {
             </div>
             {this.renderSecretWordsContainer()}
           </div>
-          <div className="seed-phrase__side">
+          {/* <div className="seed-phrase__side">
             <div className="first-time-flow__text-block">{`${t('tips')}:`}</div>
             <div className="first-time-flow__text-block">
               {t('storePhrase')}
@@ -159,19 +159,19 @@ export default class RevealSeedPhrase extends PureComponent {
                 {t('downloadSecretBackup')}
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="reveal-seed-phrase__buttons">
           <Button
-            type="secondary"
-            className="first-time-flow__button"
+            type="warning"
+            className="first-time-flow__button btn--rounded"
             onClick={this.handleSkip}
           >
             {t('remindMeLater')}
           </Button>
           <Button
-            type="primary"
-            className="first-time-flow__button"
+            type="secondary"
+            className="first-time-flow__button btn--rounded"
             onClick={this.handleNext}
             disabled={!isShowingSeedPhrase}
           >

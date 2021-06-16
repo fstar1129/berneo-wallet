@@ -25,22 +25,22 @@ export default class MetaFoxLogo extends PureComponent {
       >
         <img
           height="30"
-          src="./images/logo/berneo-logo-horizontal.jpg"
+          src="./images/logo/berneo-logo-horizontal.png"
           className={classnames(
             'app-header__metafox-logo',
             'app-header__metafox-logo--horizontal',
           )}
           alt=""
         />
-        {/* <img
+        <img
           {...iconProps}
-          src="./images/logo/berneo-logo.jpg"
+          src="./images/logo/berneo-logo.png"
           className={classnames(
             'app-header__metafox-logo',
             'app-header__metafox-logo--icon',
           )}
           alt=""
-        /> */}
+        />
       </div>
     );
   }
